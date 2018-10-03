@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
         path('', views.index, name = 'index'),
+        path('<slug:slug>', views.blogpost, name='blogpost'),
         ]
 
 
