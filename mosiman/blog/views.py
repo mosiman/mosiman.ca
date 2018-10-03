@@ -15,12 +15,19 @@ def index(request):
     return HttpResponse(template.render(context))
 
 def blogpost(request, slug):
-    # get entry where slug is the same
 
-    # load that into contents variable
+    # try finding the entry, else, return to previous page
+    try:
+        # get entry where slug is the same
+        entry = Entry.objects.get(slug=slug)
+        # load that into contents variable
 
-    # markdownify (don't forget the extensions!)
+        # markdownify (don't forget the extensions!)
 
-    # HttpResponse return the markdownified html
-    return HttpResponse(slug)
+        # HttpResponse return the markdownified html
+        return HttpResponse(entry.formatted_markdown)
+    except Exception as e:
+        print(e)
+        # actually should 404
+        return HttpResponse(loader.get_template('blog/index.html'))
 
