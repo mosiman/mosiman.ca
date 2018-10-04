@@ -53,10 +53,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mosiman.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'blog', 'templates'),
+            os.path.join(BASE_DIR, 'homepage', 'templates'),
+            os.path.join(BASE_DIR, 'mosiman', 'templates'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
