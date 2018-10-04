@@ -14,10 +14,15 @@ class Entry(models.Model):
     pub_date = models.DateTimeField(default=datetime.now, blank=True)
     slug = models.SlugField()
     content = MarkdownxField()
+    coverphoto = models.ImageField(upload_to='blog/static/blog/', blank=True)
 
     @property
     def formatted_markdown(self, *args, **kwargs):
         return markdownify(self.content)
+
+    @property
+    def staticpath(self, *args, **kwargs):
+        return "/" + "/".join(self.coverphoto.name.split('/')[1:])
 
     def __str__(self):
         return self.title

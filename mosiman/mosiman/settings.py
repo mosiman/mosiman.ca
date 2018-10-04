@@ -122,3 +122,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MARKDOWNX_MEDIA_PATH='blog/static/blog/markdownx'
+
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'mdx_math'
+        ]
+
+MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
+    'mdx_math': {
+        'enable_dollar_delimiter': 'True'
+    }
+}
+

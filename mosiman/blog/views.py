@@ -22,10 +22,13 @@ def blogpost(request, slug):
         entry = Entry.objects.get(slug=slug)
         # load that into contents variable
 
-        # markdownify (don't forget the extensions!)
+        context = {
+                'entry': entry
+                }
+        template = loader.get_template('blog/post.html')
+        return HttpResponse(template.render(context))
 
         # HttpResponse return the markdownified html
-        return HttpResponse(entry.formatted_markdown)
     except Exception as e:
         print(e)
         # actually should 404
