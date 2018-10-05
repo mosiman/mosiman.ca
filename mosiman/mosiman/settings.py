@@ -74,6 +74,12 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR, 'blog', 'static'),
+	os.path.join(BASE_DIR, 'homepage', 'static'),
+	os.path.join(BASE_DIR, 'mosiman', 'static'),
+]
+
 WSGI_APPLICATION = 'mosiman.wsgi.application'
 
 
