@@ -16,46 +16,20 @@
 	<h2 class="text-center text-uppercase text-secondary mb-0">Portfolio</h2>
 	<hr class="star-dark mb-5">
 		<div class="card-columns mx-auto mb-5">
+			{% for piece in portfoliopieces %}
 			<div class="card">
-			<img class="card-img-top" src="{% static 'homepage/cat1.jpg' %} " alt="Card image cap">
-			<div class="card-body">
-			  <h5 class="card-title">Card title that wraps to a new line</h5>
-			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				<a href="{{ piece.cardlink }}">
+					<img class="card-img-top" src="{{ piece.staticpath }} ">
+				</a>
+				<div class="card-body">
+				  <h5 class="card-title text-center">{{ piece.title | safe}}</h5>
+				  <p class="card-text">{{ piece.content | safe }}</p>
+				</div>
+				<div class="card-footer text-muted">
+					{{ piece.cardfooter | safe }}
+				</div>
 			</div>
-
-			</div>
-			<div class="card">
-			<img class="card-img-top" src="{% static 'homepage/cat2.jpg' %} " alt="Card image cap">
-			<div class="card-body">
-			  <h5 class="card-title">Card title that wraps to a new line</h5>
-			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			</div>
-			</div>
-
-
-			<div class="card">
-			<img class="card-img-top" src="{% static 'homepage/cat3.jpg' %} " alt="Card image cap">
-			<div class="card-body">
-			  <h5 class="card-title">Card title that wraps to a new line</h5>
-			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			</div>
-			</div>
-
-			<div class="card">
-			<img class="card-img-top" src="{% static 'homepage/cat4.jpg' %} " alt="Card image cap">
-			<div class="card-body">
-			  <h5 class="card-title">Card title that wraps to a new line</h5>
-			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			</div>
-			</div>
-
-			<div class="card">
-			<img class="card-img-top" src="{% static 'homepage/cat5.jpg' %} " alt="Card image cap">
-			<div class="card-body">
-			  <h5 class="card-title">Card title that wraps to a new line</h5>
-			  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			</div>
-			</div>
+			{% endfor %}
 		</div>
   </div>
 </section>
