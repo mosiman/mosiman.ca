@@ -1,7 +1,15 @@
+## Maybe
+
+- make a resume model that stores old resumes?
+
 ## To Do
 
-- link resume
 - create_app parkingdataviz
+    * [x] Use external api for the maptiles
+    * [x] copy flask over
+    * [ ] Copy DB to django?
+    * [ ] See how leaflet performs
+    * [ ] design the site
 - fancy jquery animations
     > thinkin like fancy slides or fades or something once the content is visible.
     * [ ] portfolio section
@@ -12,9 +20,12 @@
     * [ ] ABE: find github repo
     * [ ] Auxin: serve the PDF, maybe a blog post about the python code?
     * [ ] Transcriptome: serve the PDF
+- fix fontawesome webfonts loading (or just get rid of them)
 
 ## In Progress
 
+- link resume
+    * [ ] Make generalized resume, remove phone number
 
 ## Done
 
@@ -25,3 +36,4 @@
 - portfolio_project model for homepage
     * [x] Make the model
     * [x] Populate the model
+- finish about section

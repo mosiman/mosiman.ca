@@ -20,5 +20,6 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
+    path('parkingtoronto/', include('parkingtoronto.urls')),
     path(r'markdownx/', include('markdownx.urls')),
 ]

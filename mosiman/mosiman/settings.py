@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'markdownx',
     'homepage.apps.HomepageConfig',
+    'parkingtoronto.apps.ParkingtorontoConfig',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,6 +80,7 @@ STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'blog', 'static'),
 	os.path.join(BASE_DIR, 'homepage', 'static'),
 	os.path.join(BASE_DIR, 'mosiman', 'static'),
+	os.path.join(BASE_DIR, 'parkingtoronto', 'static'),
 ]
 
 WSGI_APPLICATION = 'mosiman.wsgi.application'
