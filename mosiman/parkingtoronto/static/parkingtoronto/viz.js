@@ -67,8 +67,12 @@ $(document).ready(function() {
 
 	$("#ajaxButton").click( function() {
 		console.log("clickeddd")
+		console.log(csrftoken)
         $.ajax({
-            url: "http://dev.mosiman.ca:8888/ajaxTest", 
+            url: $("#Url").attr("data-url"), 
+			headers: {
+				"X-CSRFToken" : csrftoken
+			},
             data: {somenum: 8},
             type: 'POST',
             success: function(data) {
