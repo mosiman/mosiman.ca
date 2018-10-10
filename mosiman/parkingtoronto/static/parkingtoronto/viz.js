@@ -32,13 +32,16 @@ $(document).ready(function() {
 		// This is going to be the workhorse function, probably.
 		popup.setLatLng(e.latlng).setContent("Clicked map at: " + e.latlng.toString()).openOn(mymap)
         $.ajax({
-            url: "http://dev.mosiman.ca:8888/ajaxMapClick", 
+            url: $("#Url").attr("data-url"), 
+			headers: {
+				"X-CSRFToken" : csrftoken
+			},
             data: {lat: e.latlng.lat, lng: e.latlng.lng},
             type: 'POST',
             success: function(data) {
                 console.log(data.bbox)
                 console.log(data.outstring)
-                console.log(data.infnodes)
+                //console.log(data.infnodes)
 
                 if (data.found){
                     console.log("found!")
@@ -52,12 +55,12 @@ $(document).ready(function() {
                                 [data.bbox[1], data.bbox[2]]]).addTo(mymap);
 
                     // calculate some statistics
-                    total_infractions = data.infnodes.length
-                    mean_fine = data.infnodes.map(function(x){return x.fine}).reduce(function(total,x){ return total + x}) / total_infractions
-                    console.log("total infractions: ")
-                    console.log(total_infractions)
-                    console.log("mean fine:")
-                    console.log(mean_fine)
+                    // total_infractions = data.infnodes.length
+                    // mean_fine = data.infnodes.map(function(x){return x.fine}).reduce(function(total,x){ return total + x}) / total_infractions
+                    // console.log("total infractions: ")
+                    // console.log(total_infractions)
+                    // console.log("mean fine:")
+                    // console.log(mean_fine)
                 }
             }})
 

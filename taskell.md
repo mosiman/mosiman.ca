@@ -4,12 +4,6 @@
 
 ## To Do
 
-- create_app parkingdataviz
-    * [x] Use external api for the maptiles
-    * [x] copy flask over
-    * [ ] Copy DB to django?
-    * [ ] See how leaflet performs
-    * [ ] design the site
 - fancy jquery animations
     > thinkin like fancy slides or fades or something once the content is visible.
     * [ ] portfolio section
@@ -26,6 +20,11 @@
 
 - link resume
     * [ ] Make generalized resume, remove phone number
+- create_app parkingdataviz
+    * [x] Use external api for the maptiles
+    * [x] copy flask over
+    * [x] See how leaflet performs
+    * [ ] design the site
 
 ## Done
 
