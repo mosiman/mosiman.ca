@@ -1,39 +1,38 @@
-<!DOCCTYPE html>
-
+{% extends 'base.html' %}
 {% load static %}
 
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>title</title>
+{% block extern_js_css %}
+<link rel="stylesheet" href="{% static 'parkingtoronto/viz.css' %}" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+                       integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+                       crossorigin=""/>
 
-        <link rel="stylesheet" href="{% static 'parkingtoronto/viz.css' %}" />
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-							   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-							   crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+        crossorigin=""></script>
 
-		<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-				integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-				crossorigin=""></script>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 
-		<script
-			src="https://code.jquery.com/jquery-3.3.1.min.js"
-			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'csrf.js' %}"></script>
+{% endblock %}
 
-		<script type="text/javascript" src="{% static 'csrf.js' %}"></script>
-
-
+{% block siteheader %}
+Toronto Parking Ticket Vizualization
+{% endblock %}
 
 
-	</head>
-	<body>
+{% block content %}
+<h1> sup </h1>
 
-		<title> Maps and shit </title>
+<div class="container">
+<div class="row">
+  <div class="col-lg-8 col-md-10 mx-auto">
 
-		<h1> sup </h1>
 
-		<div id="mapid"></div>
+        <div id="mapid"></div>
 
 
         <script type="text/javascript" src="{% static 'parkingtoronto/viz.js' %}"></script>
@@ -57,19 +56,23 @@
 
         </div>
 
-		<div id="ajaxtest">
+        <div id="ajaxtest">
 
-			<p id="testtext"> here's some text, to be udpated </p>
+            <p id="testtext"> here's some text, to be udpated </p>
 
             <!-- pass in django url to javascript, thanks https://stackoverflow.com/a/49824680/5146008 -->
             <input type="hidden" id="Url" data-url="{% url 'streetsegapi' %}" />
 
-			<button type="button" id="ajaxButton"> call the server and update </button>
+            <button type="button" id="ajaxButton"> call the server and update </button>
 
 
-		</div>
-
-	</body>
-</html>
+        </div>
 
 
+
+
+  </div>
+</div>
+</div>
+
+{% endblock %}
