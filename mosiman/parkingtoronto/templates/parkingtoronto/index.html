@@ -16,7 +16,6 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="{% static 'csrf.js' %}"></script>
 {% endblock %}
 
 {% block siteheader %}
@@ -31,9 +30,15 @@ Toronto Parking Ticket Vizualization
 <div class="row">
   <div class="col-lg-8 col-md-10 mx-auto">
 
+        <input type="hidden" id="Url" data-url="{% url 'streetsegapi' %}" />
 
         <div id="mapid"></div>
 
+        <div id="streetinfo">
+
+            To get started, find a street and click! 
+
+        </div>
 
         <script type="text/javascript" src="{% static 'parkingtoronto/viz.js' %}"></script>
 
@@ -60,8 +65,8 @@ Toronto Parking Ticket Vizualization
 
             <p id="testtext"> here's some text, to be udpated </p>
 
-            <!-- pass in django url to javascript, thanks https://stackoverflow.com/a/49824680/5146008 -->
-            <input type="hidden" id="Url" data-url="{% url 'streetsegapi' %}" />
+            <!-- pass in django url to javascript, thanks https://stackoverflow.com/a/49824680/5146008
+            -->
 
             <button type="button" id="ajaxButton"> call the server and update </button>
 

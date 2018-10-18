@@ -1,16 +1,20 @@
 from django.shortcuts import render
-from django.template import loader
+from django.template import loader, RequestContext
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 import sqlite3
 
 
 # Create your views here.
 
+@ensure_csrf_cookie
 def index(request):
     template = loader.get_template('parkingtoronto/index.html')
     return render(request, 'parkingtoronto/index.html')
 
+
 def streetsegapi(request):
+    print("wassup")
     lat = request.POST['lat']
     lng = request.POST['lng']
     outstring = str(lat) + ", " + str(lng) + " is "
@@ -27,12 +31,29 @@ def streetsegapi(request):
         outstring += "inside way: " + str(ss_result[0])
         bbox = ss_result[2:]
 
+        # get all infractions from way
+
+        c.execute('select * from streetsegmentinfraction where osm_id = ?', (str(ss_result[0]),))
+        infs = c.fetchall()
+        colnames = [d[0] for d in c.description]
+        print(colnames)
+        infarr = []
+        for row in infs:
+            infdict = dict(zip(colnames, row))
+            infarr.append(infdict)
+            # thanks https://stackoverflow.com/a/9986400/5146008
+        print(infarr)
+        print(len(infs))
+
         return JsonResponse({
             'outstring': outstring,
+            'name': ss_result[1],
             'found': True,
-            'bbox': bbox })
+            'bbox': bbox,
+            'infs': infarr})
     else:
         return JsonResponse({
             'outstring': outstring + "not inside any bbox in db",
+            'name': '',
             'found': False,
             'bbox': [] })

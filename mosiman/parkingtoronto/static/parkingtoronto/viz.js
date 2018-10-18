@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-
+        
+    var csrftoken = Cookies.get('csrftoken')
 	var mymap = L.map('mapid').setView([43.653908, -79.384293], 13);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -9,42 +10,35 @@ $(document).ready(function() {
 		accessToken: 'pk.eyJ1IjoibW9zaW1hbiIsImEiOiJjam4xNmdyZXIxZ3VtM3FybzM4dXRiOHM5In0.Yh0CQpkMw1PYQNDTSN2XpQ'
 	}).addTo(mymap); 
 
-	// var polygon = L.polygon([
-	// 						[43.6606658,-79.3748618],
-	// 						[43.6606658,-79.3722203],
-	// 						[43.6612191,-79.3722203],
-	// 						[43.6612191,-79.3748618]
-	// 						]).addTo(mymap);
-
-    // var georgeSt = L.polygon([
-    //                         [43.6555838, -79.3734656],
-    //                         [43.6555838, -79.3727395],
-    //                         [43.6572936, -79.3727395],
-    //                         [43.6572936, -79.3734656]
-    //                         ]).addTo(mymap);
-    //                         
-
     var active_polygon;
 	var popup = L.popup()
 
 
+    function generateStats(data){
+        document.getElementById("streetinfo").innerHTML = data.name
+    }
+
 	function onMapClick(e){
 		// This is going to be the workhorse function, probably.
-		popup.setLatLng(e.latlng).setContent("Clicked map at: " + e.latlng.toString()).openOn(mymap)
+		popup.setLatLng(e.latlng).setContent("Loading data for coordinates " + e.latlng.toString()).openOn(mymap)
+        console.log($("#Url").attr("data-url"))
         $.ajax({
             url: $("#Url").attr("data-url"), 
 			headers: {
-				"X-CSRFToken" : csrftoken
+				"X-CSRFToken" : Cookies.get('csrftoken')
 			},
             data: {lat: e.latlng.lat, lng: e.latlng.lng},
             type: 'POST',
             success: function(data) {
                 console.log(data.bbox)
                 console.log(data.outstring)
+                console.log(data.infs)
                 //console.log(data.infnodes)
 
                 if (data.found){
                     console.log("found!")
+                    generateStats(data)
+                    popup.setLatLng(e.latlng).setContent(data.name).openOn(mymap)
                     if (active_polygon){
                         mymap.removeLayer(active_polygon)
                     }
@@ -61,8 +55,16 @@ $(document).ready(function() {
                     // console.log(total_infractions)
                     // console.log("mean fine:")
                     // console.log(mean_fine)
+                } else {
+                    popup.setLatLng(e.latlng).setContent("No parking tickets found for this location!").openOn(mymap)
+
+
                 }
-            }})
+            },
+            fail: function(xhr, textStatus, errorThrown){
+                       alert('request failed');
+                    }
+        })
 
 	}
 
