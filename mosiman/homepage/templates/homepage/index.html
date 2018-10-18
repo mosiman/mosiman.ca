@@ -19,7 +19,7 @@
 			{% for piece in portfoliopieces %}
 			<div class="card">
 				<a href="{{ piece.cardlink }}">
-					<img class="card-img-top" src="{{ piece.staticpath }} ">
+					<img class="card-img-top" src="/~d49chan{{ piece.staticpath }} ">
 				</a>
 				<div class="card-body">
 				  <h5 class="card-title text-center">{{ piece.title | safe}}</h5>
@@ -43,7 +43,7 @@
 		<!--
 		<p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
 		-->
-		<img class="img-thumbnail" src="{% static 'homepage/me.png' %}" alt="Me">
+		<img class="img-thumbnail" src="{% static 'homepage/me.jpg' %}" alt="Me">
 	  </div>
 	  <div class="col-md-6 mr-auto">
 		<p class="lead">I'm Dillon, a student at the University of Waterloo studying mathematics with a focus on scientific computing. I program primarily with Python in all sorts of settings: scientific, data analytics, and web programming. I've recently taken a liking to <a href="https://julialang.org">Julia</a> as an alternative to C++ for heavy computations. When I'm not programming, I like to hit the gym, ride my bike, and play music. If you like the work I do and are looking to get a job done right, feel free to get in touch!</p>

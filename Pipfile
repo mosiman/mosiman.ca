@@ -8,6 +8,8 @@ django = "*"
 django-autoslug = "*"
 django-markdownx = "*"
 python-markdown-math = "*"
+gunicorn = "*"
+pip = "==18.0"
 
 [dev-packages]
 

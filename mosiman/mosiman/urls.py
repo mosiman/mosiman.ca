@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('homepage.urls')),
-    path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
-    path('parkingtoronto/', include('parkingtoronto.urls')),
-    path(r'markdownx/', include('markdownx.urls')),
+    path('', include('homepage.urls'), name='homepage'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('blog/', include('blog.urls'), name='blog'),
+    path('parkingtoronto/', include('parkingtoronto.urls'), name='parkingtoronto'),
+    path(r'~d49chan/markdownx/', include('markdownx.urls')),
 ]

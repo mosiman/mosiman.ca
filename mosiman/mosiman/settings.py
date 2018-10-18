@@ -137,8 +137,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/users/d49chan/www/'
+STATIC_URL = 'http://csclub.uwaterloo.ca/~d49chan/static'
+STATIC_ROOT = '/users/d49chan/www/static'
 
 MARKDOWNX_MEDIA_PATH='blog/static/blog/markdownx'
 
@@ -154,3 +154,4 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
     }
 }
 
+FORCE_SCRIPT_NAME = '/~d49chan'

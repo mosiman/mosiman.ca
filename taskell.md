@@ -21,6 +21,7 @@
 - link resume
     * [ ] Make generalized resume, remove phone number
 - create_app parkingdataviz
+    > Look at the taskell inside parkingtoronto, big enough project on its own
     * [x] Use external api for the maptiles
     * [x] copy flask over
     * [x] See how leaflet performs
