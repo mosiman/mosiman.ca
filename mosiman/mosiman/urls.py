@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('blog/', include('blog.urls'), name='blog'),
     path('parkingtoronto/', include('parkingtoronto.urls'), name='parkingtoronto'),
-    path(r'~d49chan/markdownx/', include('markdownx.urls')),
+    path(r'markdownx/', include('markdownx.urls')),
 ]

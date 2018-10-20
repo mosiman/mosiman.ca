@@ -33,7 +33,7 @@ def streetsegapi(request):
 
         # get all infractions from way
 
-        c.execute('select * from streetsegmentinfraction where osm_id = ?', (str(ss_result[0]),))
+        c.execute('select * from streetsegmentinfractions where osm_id = ?', (str(ss_result[0]),))
         infs = c.fetchall()
         colnames = [d[0] for d in c.description]
         print(colnames)

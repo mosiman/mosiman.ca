@@ -19,7 +19,7 @@
 			{% for piece in portfoliopieces %}
 			<div class="card">
 				<a href="{{ piece.cardlink }}">
-					<img class="card-img-top" src="/~d49chan{{ piece.staticpath }} ">
+					<img class="card-img-top" src="{{ piece.staticpath }} ">
 				</a>
 				<div class="card-body">
 				  <h5 class="card-title text-center">{{ piece.title | safe}}</h5>

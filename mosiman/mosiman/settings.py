@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$+zh5z5+q6)p*yhw-oqjesiefu8i*9nq4@9g#z=bnf3n48t9l!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -137,8 +137,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = 'http://csclub.uwaterloo.ca/~d49chan/static'
-STATIC_ROOT = '/users/d49chan/www/static'
+# STATIC_URL = 'http://csclub.uwaterloo.ca/~d49chan/static'
+# STATIC_ROOT = '/users/d49chan/www/static'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MARKDOWNX_MEDIA_PATH='blog/static/blog/markdownx'
 
@@ -154,4 +156,4 @@ MARKDOWNX_MARKDOWN_EXTENSION_CONFIGS = {
     }
 }
 
-FORCE_SCRIPT_NAME = '/~d49chan'
+# FORCE_SCRIPT_NAME = '/~d49chan'
