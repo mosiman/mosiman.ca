@@ -25,7 +25,7 @@ SECRET_KEY = '$+zh5z5+q6)p*yhw-oqjesiefu8i*9nq4@9g#z=bnf3n48t9l!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.mosiman.ca', 'localhost']
 
 
 # Application definition
