@@ -14,9 +14,6 @@ $(document).ready(function() {
 	var popup = L.popup()
 
 
-    function generateStats(data){
-        document.getElementById("streetinfo").innerHTML = data.name
-    }
 
 	function onMapClick(e){
 		// This is going to be the workhorse function, probably.
@@ -37,16 +34,19 @@ $(document).ready(function() {
 
                 if (data.found){
                     console.log("found!")
-                    generateStats(data)
                     popup.setLatLng(e.latlng).setContent(data.name).openOn(mymap)
+                    document.getElementById("streetName").innerHTML = data.name
                     if (active_polygon){
                         mymap.removeLayer(active_polygon)
                     }
+                    
                     active_polygon = new L.polygon([
                                 [data.bbox[0], data.bbox[2]],
                                 [data.bbox[0], data.bbox[3]],
                                 [data.bbox[1], data.bbox[3]],
                                 [data.bbox[1], data.bbox[2]]]).addTo(mymap);
+
+                    generateStats(data.infs);
 
                     // calculate some statistics
                     // total_infractions = data.infnodes.length
@@ -69,6 +69,27 @@ $(document).ready(function() {
 	}
 
 	mymap.on('click', onMapClick);
+
+    function generateStats(infs){
+
+        // Get tickethours
+        var tickethours = infs.map(x => moment(x.datetime).get("Hour"))
+        Plotly.newPlot("hourlyhist", [{
+            x: tickethours, 
+            type: 'histogram',
+            autobinx: false,
+            xbins: {
+                start: 0,
+                end: 23
+            }}],
+            {
+                title: 'Tickets by hour',
+                xaxis: { title: 'Hour',
+                    range: [0,23]},
+                yaxis: { title: 'Number of tickets' }
+            })
+
+    }
 
 	$("#ajaxButton").click( function() {
 		console.log("clickeddd")

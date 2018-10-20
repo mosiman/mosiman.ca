@@ -15,6 +15,8 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+<script src="https://unpkg.com/moment"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 {% endblock %}
 
@@ -35,9 +37,9 @@ Toronto Parking Ticket Vizualization
         <div id="mapid"></div>
 
         <div id="streetinfo">
-
-            To get started, find a street and click! 
-
+            <p align="left">
+                View parking ticket statistics for each street by finding your desired street and clicking on it. Note that some streets may not appear in the database, so try a nearby street. In this box, you'll have more in-depth statistics of the particular street.
+            </p>
         </div>
 
         <script type="text/javascript" src="{% static 'parkingtoronto/viz.js' %}"></script>
@@ -47,15 +49,14 @@ Toronto Parking Ticket Vizualization
             <h3 id="streetName"> </h3>
 
             <div width="75%" align="center" min-height="400px"> 
-                <p align="left">
-                    View parking ticket statistics for each street by finding your desired street and clicking on it. Note that some streets may not appear in the database, so try a nearby street. In this box, you'll have more in-depth statistics of the particular street.
-                </p>
 
                 <div id="numInfractions"> </div>
 
                 <div id="modeCode"> </div>
 
                 <div id="avgFine"> </div>
+
+                <div id="hourlyhist"></div>
             </div>
 
 

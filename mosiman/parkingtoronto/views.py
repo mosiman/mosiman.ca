@@ -36,13 +36,11 @@ def streetsegapi(request):
         c.execute('select * from streetsegmentinfractions where osm_id = ?', (str(ss_result[0]),))
         infs = c.fetchall()
         colnames = [d[0] for d in c.description]
-        print(colnames)
         infarr = []
         for row in infs:
             infdict = dict(zip(colnames, row))
             infarr.append(infdict)
             # thanks https://stackoverflow.com/a/9986400/5146008
-        print(infarr)
         print(len(infs))
 
         return JsonResponse({
