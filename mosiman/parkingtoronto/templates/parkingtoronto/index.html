@@ -17,6 +17,9 @@
     crossorigin="anonymous"></script>
 <script src="https://unpkg.com/moment"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- distributions and stuff -->
+<script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+
 
 {% endblock %}
 
@@ -26,7 +29,6 @@ Toronto Parking Ticket Vizualization
 
 
 {% block content %}
-<h1> sup </h1>
 
 <div class="container">
 <div class="row">
@@ -57,24 +59,14 @@ Toronto Parking Ticket Vizualization
                 <div id="avgFine"> </div>
 
                 <div id="hourlyhist"></div>
+
+                <div id="interarrivalhist"></div>
+                
+                <div id="interarrivalboxplot"></div>
             </div>
 
 
         </div>
-
-        <div id="ajaxtest">
-
-            <p id="testtext"> here's some text, to be udpated </p>
-
-            <!-- pass in django url to javascript, thanks https://stackoverflow.com/a/49824680/5146008
-            -->
-
-            <button type="button" id="ajaxButton"> call the server and update </button>
-
-
-        </div>
-
-
 
 
   </div>
