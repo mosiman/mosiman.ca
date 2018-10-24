@@ -18,12 +18,8 @@
 
 ## In progress
 
-- Set up osm-website on cloud.csclub
-    > Notes: Failed at using vagrant and docker, so now its time to install from scratch.
-    * [x] Download toronto.osm
-    * [x] import database (?)
 - Back end for street stats generation
-    * [ ] Query all infractions
+    * [x] Query all infractions
     * [ ] Mean, mode, top time of day, ranking?, interarrival time
     * [ ] how to do nice graphs and shit
 - Revamp database, in the meantime probably add to django
@@ -33,3 +29,7 @@
 
 ## Done
 
+- Set up osm-website on cloud.csclub
+    > Notes: Failed at using vagrant and docker, so now its time to install from scratch.
+    * [x] Download toronto.osm
+    * [x] import database (?)
