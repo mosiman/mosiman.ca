@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{config.title}} | {{page.title}}{% endblock title %}
+
+{% block content %}
+    <!-- custom stylesheet. Need to use tailwindcss to preprocess -->
+    <link href="/styles/page.css" rel="stylesheet">
+
+    <!-- include KaTeX stuff here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        });
+    </script>
+
+    <div class="max-w-3xl mx-auto mt-4">
+        {% if page.extra.banner %}
+            <img src="{{page.extra.banner}}" alt="{{page.extra.alt}}" class="w-full h-64 object-cover mb-4 rounded-md">
+        {% endif %}
+        <h1 class="text-3xl font-bold mb-4">{{page.title}}</h1>
+        <div class="bg-white border border-gray-200 p-6 rounded-md markdown-content">
+            {{page.content | safe}}
+        </div>
+    </div>
+
+{% endblock content %}

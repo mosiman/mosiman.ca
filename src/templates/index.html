@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{config.title}} | About{% endblock title %}
+
+{% block content %}
+<style>
+    .profile-image {
+        float: right;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        shape-outside: circle();
+        margin: 0 0 20px 20px;
+    }
+</style>
+
+<div class="max-w-md p-6 bg-white rounded-md shadow-md mt-4">
+    <h1 class="text-3xl font-bold mb-4">👋</h1>
+    <img src="/img/me.jpg" alt="It's me!" class="profile-image">
+    <p class="text-gray-600">Hi there. I go by <a class="underline decoration-emerald-800">mosiman</a> on the internet, Dillon in meatspace. I think a lot about data. I studied Applied Mathematics at the University of Waterloo. I currently live in Ottawa, Ontario.</p>
+    </br>
+    <p class="text-gray-600">I have previously held roles in DevOps, Machine Learning Engineering, and general software development.</p>
+    </br>
+    <p class="text-gray-600">I have an unusual obsession with backpacks and other ways to haul your stuff around. I enjoy tinkering with bikes and writing little bits of code on whatever holds my interest. I have also been largely unsuccessful with learning Japanese, but haven't given it up yet.</p>
+    </br>
+    <p class="text-gray-600">Want to get in touch? Shoot me an <a href="mailto:hi@mosiman.ca" class="hover:text-slate-800 underline decoration-emerald-800">email</a>!</p>
+</div>
+{% endblock content %}

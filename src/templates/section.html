@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{config.title}} | {{section.title}}{% endblock title %}
+
+{% block content %}
+    <style>
+        .project-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-details {
+            padding: 20px;
+        }
+    </style>
+
+    <div class="max-w-3xl mx-auto mt-4">
+        <h1 class="text-3xl font-bold mb-4">{{section.title}}</h1>
+        <p class="text-gray-600 mb-4">{{section.description}}</p>
+
+        {% for page in section.pages %}
+            <div class="project-card mb-4">
+                <a href="{{page.permalink}}" class="block">
+                    {% if page.extra.banner %}
+                        <img src="{{page.extra.banner}}" alt="{{page.extra.alt}}" class="project-image">
+                    {% endif %}
+                    <div class="project-details">
+                        <h2 class="text-xl font-bold mb-2">{{page.title}}</h2>
+                        <p class="text-sm text-gray-400 mt-2">{{ page.date }}</p>
+                        <p class="text-gray-600">{{page.description}}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock content %}

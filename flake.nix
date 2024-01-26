@@ -14,6 +14,8 @@
            buildInputs = [
              pkgs.hugo
              pkgs.go
+             pkgs.zola
+             pkgs.tailwindcss
            ];
          };
       });

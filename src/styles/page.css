@@ -1,0 +1,51 @@
+.markdown-content p {
+    @apply text-gray-600 py-4
+}
+
+.markdown-content a {
+    @apply text-emerald-800 underline
+}
+
+.markdown-content ul li {
+    @apply list-disc list-inside text-gray-600
+}
+
+.markdown-content ol li {
+    @apply list-disc list-inside text-gray-600
+}
+
+.markdown-content h1 {
+    @apply text-3xl font-bold text-gray-800
+}
+
+.markdown-content h2 {
+    @apply text-2xl font-bold text-gray-800
+}
+
+.markdown-content blockquote {
+    @apply border-l-4 border-gray-300 pl-4
+}
+
+/* Zola recommends the following styles for code blocks */
+pre {
+  padding: 1rem;
+  overflow: auto;
+}
+pre[data-linenos] {
+  padding: 1rem 0;
+}
+pre table td {
+  padding: 0;
+}
+pre table td:nth-of-type(1) {
+  text-align: center;
+  user-select: none;
+}
+pre mark {
+  display: block;
+  background-color: rgba(254, 252, 232, 0.9);
+}
+pre table {
+  width: 100%;
+  border-collapse: collapse;
+}

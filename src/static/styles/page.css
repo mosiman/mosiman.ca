@@ -1,0 +1,81 @@
+.markdown-content p {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.markdown-content a {
+  --tw-text-opacity: 1;
+  color: rgb(6 95 70 / var(--tw-text-opacity));
+  text-decoration-line: underline;
+}
+
+.markdown-content ul li {
+  list-style-position: inside;
+  list-style-type: disc;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.markdown-content ol li {
+  list-style-position: inside;
+  list-style-type: disc;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.markdown-content h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.markdown-content h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.markdown-content blockquote {
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  padding-left: 1rem;
+}
+
+/* Zola recommends the following styles for code blocks */
+
+pre {
+  padding: 1rem;
+  overflow: auto;
+}
+
+pre[data-linenos] {
+  padding: 1rem 0;
+}
+
+pre table td {
+  padding: 0;
+}
+
+pre table td:nth-of-type(1) {
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+pre mark {
+  display: block;
+  background-color: rgba(254, 252, 232, 0.9);
+}
+
+pre table {
+  width: 100%;
+  border-collapse: collapse;
+}
