@@ -5,9 +5,9 @@ date: 2024-02-06
 
 **tl;dr**: I located the street of each parking ticket to do analysis on a per-street basis. You can play with the dataset via the DuckDB WASM shell:
 
-[DuckDB shell](https://shell.duckdb.org/#queries=v0,install-spatial~-load-spatial~%0A%0Acreate-table-parking_tickets-as%0Aselect%0A----infraction_ts%2C%0A----infraction_code%2C%0A----infraction_description%2C%0A----set_fine_amount%2C%0A----location1%2C%0A----location2%2C%0A----location3%2C%0A----location4%2C%0A----way_id%2C%0A----ST_GeomFromGeoJSON(way_geom)-as-way_geom%2C%0A----name%0Afrom-'https%3A%2F%2Fraw.githubusercontent.com%2Fmosiman%2Ftoronto_parking_tickets%2F7375efd3a419de9cab91844cf5aa709c623eaf05%2Fdata%2Fparkingtickets.parquet'%0A~)
+[DuckDB shell](https://shell.duckdb.org/#queries=v0,install-spatial~-load-spatial~%0A%0Acreate-table-parking_tickets-as%0Aselect%0A----infraction_ts%2C%0A----infraction_code%2C%0A----infraction_description%2C%0A----set_fine_amount%2C%0A----location1%2C%0A----location2%2C%0A----location3%2C%0A----location4%2C%0A----way_id%2C%0A----ST_GeomFromGeoJSON(way_geom)-as-way_geom%2C%0A----name%0Afrom-'https%3A%2F%2Fpub%20f6beeb64145748619c244838afe14b58.r2.dev%2Fparkingtickets.parquet'~%0A)
 
-The link above will run the following commands on startup. The file is about 72 MB and will take a few seconds to load.
+The link above will run the following commands on startup. The file is about 75 MB and will take a few seconds to load depending on your network speed.
 
 ```
 install spatial; load spatial;
@@ -25,7 +25,7 @@ select
     way_id,
     ST_GeomFromGeoJSON(way_geom) as way_geom,
     name
-from 'https://raw.githubusercontent.com/mosiman/toronto_parking_tickets/7375efd3a419de9cab91844cf5aa709c623eaf05/data/parkingtickets.parquet';
+from 'https://pub-f6beeb64145748619c244838afe14b58.r2.dev/parkingtickets.parquet';
 ```
 
 Notes about the DuckDB shell: 
@@ -188,3 +188,7 @@ My main goal with this dataset is to show "interarrival times" of a parking enfo
 - Use a rolling window to calculate interrarival times (e.g.: a string of 5 tickets counts as "one arrival" if the tickets all occur in a short time period (say 15 minutes).
 - Serve this data along with other general statistics (number of tickets by hour, most frequent ticket types via an API (or maybe force the client to download the 70mb parquet file, and do all the analytics on the client?)
 - Visualize the statistics with Plotly and Leaflet.js.
+
+---
+
+Update (2024-03-08): I knew that hosting the parquet file on Github by including it in the git repository was a bad idea, but I didn't know of any decent services to host the file without incurring egress fees (my VPSes have limited bandwidth). I realized that Cloudflare R2 would host it for free, and without egrees fees. It's rate-limited, but its pretty much exactly what I need right now. I nuked that file from my repository and adjusted the links to pull the file from R2.
